@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mathematical Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: white;
+            width: 400px;
+            padding: 30px;
+            border: 3px solid #2e7d32;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px gray;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2e7d32;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 2px solid #aaa;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1b5e20;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid #2e7d32;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+
+        <h1>Mathematical Calculator</h1>
+
+        <form onsubmit="calculate(); return false;">
+
+            <label>Enter First Number:</label>
+            <input type="number" id="number1" step="any" required>
+
+            <label>Enter Second Number:</label>
+            <input type="number" id="number2" step="any" required>
+
+            <label>Select Operation:</label>
+            <select id="operation">
+                <option value="addition">Addition (+)</option>
+                <option value="subtraction">Subtraction (-)</option>
+                <option value="multiplication">Multiplication (×)</option>
+                <option value="division">Division (÷)</option>
+            </select>
+
+            <button type="submit">Calculate</button>
+
+        </form>
+
+        <div id="result">
+            Result will appear here
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function calculate() {
+
+            // Get the values entered by the user
+            var number1 = parseFloat(document.getElementById("number1").value);
+            var number2 = parseFloat(document.getElementById("number2").value);
+
+            // Get the selected operation
+            var operation = document.getElementById("operation").value;
+
+            var result;
+
+            // Perform calculation
+            if (operation == "addition") {
+
+                result = number1 + number2;
+
+            } 
+            else if (operation == "subtraction") {
+
+                result = number1 - number2;
+
+            } 
+            else if (operation == "multiplication") {
+
+                result = number1 * number2;
+
+            } 
+            else if (operation == "division") {
+
+                if (number2 == 0) {
+
+                    document.getElementById("result").innerHTML =
+                        "Cannot divide by zero!";
+
+                    return;
+                }
+
+                result = number1 / number2;
+            }
+
+            // Display result
+            document.getElementById("result").innerHTML =
+                "Result = " + result;
+        }
+
+    </script>
+
+</body>
+</html>
